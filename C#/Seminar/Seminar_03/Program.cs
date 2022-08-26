@@ -75,7 +75,7 @@ Qudrat(userNumber);
 
 double FindSqrt(double xA, double yA, double xB, double yB)
 {
-    return Math.Sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));   
+    return Math.Sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));
 }
 
 Console.Write("Enter the 1st coordinate, axis X: ");
