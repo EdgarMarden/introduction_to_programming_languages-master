@@ -5,7 +5,7 @@
 //12821 -> да
 //23432 -> да
 
-/* //Решение задачи №19
+ //Решение задачи №19
 
 bool FindPoly(int anyNumber)
 {
@@ -33,7 +33,7 @@ int userNumber = Convert.ToInt32(Console.ReadLine());
 bool Boolean = FindPoly(userNumber);
 
 Console.WriteLine($"{userNumber} -> {Boolean}");
-*/
+
 
 //Задача 21
 //Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
@@ -41,8 +41,8 @@ Console.WriteLine($"{userNumber} -> {Boolean}");
 //A (3,6,8); B (2,1,-7), -> 15.84
 //A (7,-5, 0); B (1,-1,9) -> 11.53
 
-/*//Решение задачи №21
-
+//Решение задачи №21
+/*
 double FindSqrt(double x1, double y1, double z1, double x2, double y2, double z2)
 {
     return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1)); // вычисляет квадратный корень √ ( x B − x A ) 2 + ( y B − y A ) 2 + ( z B − z A ) 2
@@ -72,6 +72,7 @@ Console.WriteLine($"A ({xA}, {yA}, {zA}); B ({xB}, {yB}, {zB}) -> {distance}");
 //3 -> 1, 8, 27
 //5 -> 1, 8, 27, 64, 125
 
+/*//Решение задачи №23
 void Qudrat(int completeNumber)
 {
     int n = 1;
@@ -86,3 +87,4 @@ Console.Write("Input the any number: ");
 int userNumber = Convert.ToInt32(Console.ReadLine());
 
 Qudrat(userNumber);
+*/

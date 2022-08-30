@@ -66,13 +66,13 @@ Console.Write("Input the any number: ");
 int userNumber = Convert.ToInt32(Console.ReadLine());
 
 Qudrat(userNumber);
-*/
+
 
 /*
 Напишите программу, которая принимает на вход координаты двух точек
 и находит расстояние между ними в 2D пространстве. Math.Sqrt()
 */
-
+/*
 double FindSqrt(double xA, double yA, double xB, double yB)
 {
     return Math.Sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));
@@ -92,3 +92,4 @@ double y2 = Convert.ToDouble(Console.ReadLine());
 
 double distance = FindSqrt(x1, y1, x2, y2);
 Console.WriteLine($"{distance} is distance");
+*/
