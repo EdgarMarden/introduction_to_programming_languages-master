@@ -51,11 +51,69 @@ Console.WriteLine(); */
 
 //Напишите программу, которая принимает на вход три числа и проверяет,
 //может ли существовать треугольник с сторонами такой длины.
+//a < b + c
+//b < c + a
+//c < b + a
 
+/* bool CheckSide(int aSide, int bSide, int cSide)
+{
+    if(aSide < bSide + cSide);
+    else return false;
+        if(bSide < aSide + cSide);
+        else return false;
+            if(cSide < bSide + aSide);
+            else return false;
+    return true;
+}
 
+Console.Write("Enter the length of side A of the triangle: ");
+int a = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter the length of side A of the triangle: ");
+int b = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter the length of side A of the triangle: ");
+int c = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Can there be a triangle with sides of this length? - {CheckSide(a, b, c)}"); */
 
 //Не используя рекурсию, выведите первые N чисел Фибоначчи.
-//Первые два числа Фибоначчи: a и b.
+//Первые два числа Фибоначчи: a и b. F(n) = F(n-1) + F(n-2)
+
+/* int[] CreateRandomArray(int sizeN, int firstValue, int secondValue)
+{
+    int[] newArray = new int[sizeN];
+    newArray[0] = firstValue;
+    newArray[1] = secondValue;
+    for(int i = 2; i < sizeN; i++)
+    { 
+        newArray[i] = newArray[i - 1] + newArray[i - 2];
+    }
+    return newArray;
+}
+
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " | ");
+
+    Console.WriteLine();
+}
+
+Console.Write("Enter how many Fibonacci numbers to output ");
+int sizeN = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter the first value: ");
+int firstValue = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter the second value: ");
+int secondValue = Convert.ToInt32(Console.ReadLine());
+
+int[] myArray = CreateRandomArray(sizeN, firstValue, secondValue);
+
+Console.WriteLine();
+ShowArray(myArray); */
 
 //Напишите программу,которая будет преобразовывать
 //десятичное число в двоичное.
+
