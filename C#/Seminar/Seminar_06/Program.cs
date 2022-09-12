@@ -117,3 +117,19 @@ ShowArray(myArray); */
 //Напишите программу,которая будет преобразовывать
 //десятичное число в двоичное.
 
+string FromDecimalToBinary(int decim)
+{
+    string element = string.Empty;
+    while(decim > 0)
+    {
+        int result = decim % 2;
+        element = Convert.ToString(result) + element;
+        decim /= 2;
+    }
+    return element;
+}
+
+Console.Write("Enter the any decim value: ");
+int decimValue = Convert.ToInt32(Console.ReadLine());
+
+Console.Write($"{FromDecimalToBinary(decimValue)}");
