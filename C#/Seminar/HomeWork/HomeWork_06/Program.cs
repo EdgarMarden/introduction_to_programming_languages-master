@@ -42,7 +42,7 @@ void FindIntersectionPoint(double b1, double k1, double b2, double k2)
     double x,y;
 
     if ((k1 == k2) && (b1 == b2)) Console.Write("Straight lines match");
-    else if (k1==k2) Console.Write("Straight lines are parallel");
+    else if (k1 == k2) Console.Write("Straight lines are parallel");
 
     else
     {
