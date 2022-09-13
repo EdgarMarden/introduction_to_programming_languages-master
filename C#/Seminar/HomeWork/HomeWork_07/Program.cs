@@ -55,7 +55,7 @@
 
 // Задача №50 Решение:
 
-int[,] CreateRandom2dArray(int row, int col)
+int[,] CreateRandom2dArrayCR(int row, int col)
 {
     int minValue = 0;
     int maxValue = 9;
@@ -101,12 +101,11 @@ int rows = 5;
 int columns = 5;
 int size = rows * columns;
 
-int [,] myArray = CreateRandom2dArray(rows, columns);
+int [,] myArray = CreateRandom2dArrayCR(rows, columns);
 
 Show2dArray(myArray);
 
 FindPosition(myArray, size);
-
 
 
 // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
@@ -120,4 +119,42 @@ FindPosition(myArray, size);
 
 // Задача №52 Решение:
 
+/* int[,] CreateRandom2dArray(int row, int col)
+{
+    
+    Console.Write("Input min possible value: ");
+    int minValue = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input max possible value: ");
+    int maxValue = Convert.ToInt32(Console.ReadLine());
 
+    int [,] newArray = new int[row, col];
+
+    for (int i = 0; i < row; i++)
+        for (int j = 0; j < col; j++)
+            newArray[i, j] = new Random().Next(minValue, maxValue + 1);
+
+    return newArray;
+}
+
+void FindArithmetic(int [,] array, int row, int col)
+{
+    double sum = 0;
+    Console.Write("The arithmetic mean of each column - ");
+    for (int j = 0; j < row; j++)
+    {
+        for (int i = 0; i < col; i++) sum += array [i, j];
+        Console.Write(sum / row + " | ");
+    }
+        
+}
+
+Console.Write("Input the number of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input the number of columns: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+
+int [,] myArray = CreateRandom2dArray(rows, columns);
+
+Show2dArray(myArray);
+
+FindArithmetic(myArray, rows, columns); */
