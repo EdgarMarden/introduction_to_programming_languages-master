@@ -85,12 +85,11 @@ void Show2dArray(int [,] array)
 void FindPosition(int [,] array, int size)
 {
     Console.Write("Enter the row number: ");
-    int row = Convert.ToInt32(Console.ReadLine());
+    int row = -1 + Convert.ToInt32(Console.ReadLine());
     Console.Write("Enter the column number: ");
-    int column = Convert.ToInt32(Console.ReadLine());
+    int column = -1 + Convert.ToInt32(Console.ReadLine());
     
-    int result = array[row - 1, column - 1];
-    if(result < size) Console.WriteLine($"The value of the cell in row {row} and column {column} = {result}");
+    if(row * column < size) Console.WriteLine($"The value of the cell in row {row} and column {column} = {array[row, column]}");
     else
     {
         Console.Write($"The value of the cell in row {row} and column {column} = This position does not exist in the current array");
