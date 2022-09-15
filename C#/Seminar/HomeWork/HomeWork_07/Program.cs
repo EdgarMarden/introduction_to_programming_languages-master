@@ -82,29 +82,31 @@ void Show2dArray(int [,] array)
     Console.WriteLine();
 }
 
-void FindPosition(int [,] array, int size)
+void FindPosition(int [,] array, int rows, int columns)
 {
     Console.Write("Enter the row number: ");
-    int row = -1 + Convert.ToInt32(Console.ReadLine());
+    int findRow = Convert.ToInt32(Console.ReadLine());
     Console.Write("Enter the column number: ");
-    int column = -1 + Convert.ToInt32(Console.ReadLine());
-    
-    if(row * column < size) Console.WriteLine($"The value of the cell in row {row} and column {column} = {array[row, column]}");
+    int findColumn = Convert.ToInt32(Console.ReadLine());
+
+    if(findRow <= rows && findColumn <= columns)
+    {
+        Console.WriteLine($"The value of the cell in row {findRow} and column {findColumn} = {array[findRow, findColumn]}");
+    }
     else
     {
-        Console.Write($"The value of the cell in row {row} and column {column} = This position does not exist in the current array");
+        Console.Write($"The value of the cell in row {findRow} and column {findColumn} = This position does not exist in the current array");
     }
 }
     
 int rows = 5;
 int columns = 5;
-int size = rows * columns;
 
 int [,] myArray = CreateRandom2dArrayCR(rows, columns);
 
 Show2dArray(myArray);
 
-FindPosition(myArray, size);
+FindPosition(myArray, rows, columns);
 
 
 // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
