@@ -1,4 +1,82 @@
-﻿/* Задача 54: Задайте двумерный массив. Напишите программу,
+﻿Console.Write("Input number of rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input number of columns: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input min possible value: ");
+int minValue = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input max possible value: ");
+int maxValue = Convert.ToInt32(Console.ReadLine());
+
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+{
+    
+    int [,] newArray = new int[rows, columns];
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            newArray[i, j] = new Random().Next(minValue, maxValue + 1);
+
+    return newArray;
+}
+
+int[,] myArray = CreateRandom2dArray(rows, columns, minValue, maxValue);
+Console.WriteLine();
+
+void Show2dArray(int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write(array[i, j] + " ");
+
+        Console.WriteLine();
+    }
+
+    Console.WriteLine();
+}
+
+void SortedArray(int [,] array, int rows, int columns)
+{
+    int count = 1;
+    while(count != 0)
+    {
+        count = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 1; j < columns; j++)
+            {
+                if(array [i, j] > array [i, j - 1]) 
+                {
+                    int temp = array [i, j];
+                    array [i, j] = array [i, j - 1];
+                    array [i, j - 1] = temp;
+                    count++;
+                }
+            }
+            
+        }
+    }
+}
+
+int FindMinSum (int [,] array)
+{
+    int minSum = 0;
+    int sum = 0;
+    for (int i = 0; i < rows; i++)
+    {
+        sum = 0;
+
+        for (int j = 0; j < columns; j++)
+        {
+            sum += array[i, j];
+        }
+        if (i = 0) minSum = sum;
+
+        if (minSum > sum) minSum = sum;
+    }
+}
+
+/* Задача 54: Задайте двумерный массив. Напишите программу,
 которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 Например, задан массив:
@@ -12,6 +90,12 @@
 8 4 4 2 */
 
 //Решение Задачи №54
+
+/* Show2dArray(myArray);
+
+SortedArray(myArray, rows, columns);
+
+Show2dArray(myArray); */
 
 
 
@@ -28,6 +112,7 @@
 выдаёт номер строки с наименьшей суммой элементов: 1 строка */
 
 //Решение Задачи №56
+
 
 
 
