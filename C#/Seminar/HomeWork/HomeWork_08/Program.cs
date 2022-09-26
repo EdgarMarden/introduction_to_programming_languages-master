@@ -22,7 +22,10 @@ int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 int[,] myArray = CreateRandom2dArray(rows, columns, minValue, maxValue);
 Console.WriteLine();
 
-void Show2dArray(int [,] array)
+int[,] myArray2 = CreateRandom2dArray(rows, columns, minValue, maxValue);
+
+
+void Show2dArray (int [,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -35,7 +38,43 @@ void Show2dArray(int [,] array)
     Console.WriteLine();
 }
 
-void SortedArray(int [,] array, int rows, int columns)
+void ShowMatrix (int [,] array, int [,] array2)
+{
+    int i = 0;
+    int j = 0;
+    int i2 = 0;
+    int j2 = 0;
+
+    while(i < array.GetLength(0))
+    {
+        while(j < array.GetLength(1))
+        {
+            Console.Write(array[i, j] + " ");
+            j++;
+        }
+        Console.Write(" | ");
+
+        while(i2 == i)
+        {
+            j2 = 0;
+            while(j2 < array2.GetLength(1))
+            {
+                Console.Write(array2[i2, j2] + " ");
+                j2++;
+            }
+            
+        i2++;
+        }
+
+        Console.WriteLine();
+        j = 0;
+        i++;
+    }
+
+    Console.WriteLine();
+}
+
+void SortedArray (int [,] array, int rows, int columns)
 {
     int count = 1;
     while(count != 0)
@@ -58,22 +97,67 @@ void SortedArray(int [,] array, int rows, int columns)
     }
 }
 
-int FindMinSum (int [,] array)
+int FindMinSumRow (int [,] array)
 {
     int minSum = 0;
     int sum = 0;
+    int findRowMinSum = 0;
     for (int i = 0; i < rows; i++)
     {
         sum = 0;
 
         for (int j = 0; j < columns; j++)
-        {
             sum += array[i, j];
-        }
-        if (i = 0) minSum = sum;
 
-        if (minSum > sum) minSum = sum;
+        if (i == 0)
+        {
+            minSum = sum;
+            findRowMinSum = 0;
+        }
+
+        if (minSum > sum) 
+        {
+            minSum = sum;
+            findRowMinSum = i;
+        }
     }
+    return findRowMinSum;
+}
+
+void MultiplyMatrices (int [,] array, int [,] array2)
+{
+    int [,] multiplyArray = new int [array.GetLength(0), array2.GetLength(1)];
+    int temp = 0;
+     for (int i = 0; i < array.GetLength(0); i++)
+     {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (i = 0; i < array2.GetLength(0); i++)
+            {
+                for (j = 0; j < array2.GetLength(1); j++)
+                {
+                    for (i = 0; i < multiplyArray.GetLength(0); i++)
+                    {
+                        for (j = 0; j < multiplyArray.GetLength(1); j++)
+                        {
+                            if(i % 2 == 0) 
+                            {
+                                multiplyArray [i, j] = array[i, j] * array2 [i, j];
+                                temp = multiplyArray [i, j];
+                            }
+                            else 
+                            {
+                                multiplyArray [i, j] = array[i, j] * array2 [i, j] + temp;
+                                Console.Write(multiplyArray[i, j] + " ");
+                            }
+
+                            Console.WriteLine();
+                        }
+                    }
+                }
+            }
+        }
+     }
 }
 
 /* Задача 54: Задайте двумерный массив. Напишите программу,
@@ -113,7 +197,9 @@ Show2dArray(myArray); */
 
 //Решение Задачи №56
 
+/* Show2dArray(myArray);
 
+Console.WriteLine("Row " + FindMinSumRow(myArray) + " with the smallest sum of elements"); */
 
 
 /* Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
@@ -128,6 +214,13 @@ Show2dArray(myArray); */
 
 //Решение Задачи №58
 
+/* Show2dArray(myArray);
+
+Show2dArray(myArray2); */
+
+ShowMatrix(myArray, myArray2);
+
+/* MultiplyMatrices(myArray, myArray2); */
 
 
 /* Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
