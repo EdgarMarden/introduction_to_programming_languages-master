@@ -19,8 +19,56 @@ int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
     return newArray;
 }
 
+int[, ,] Create3dArrayNoRepetitions(int rows, int columns, int depth)
+{
+    
+    int [, ,] newArray = new int[rows, columns, depth];
+    int temp = new Random().Next(10, 99);
+
+    if (columns * rows * depth <= 90)
+    {
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
+                for (int k = 0; k < depth; k++)
+                {   
+                    if (temp > 99)
+                    {
+                        temp = 10;
+                        newArray[i, j, k] = temp;
+                        temp += 1;
+                    }
+                    else 
+                    {
+                        newArray[i, j, k] = temp;
+                        temp += 1;
+                    }
+                }
+    }
+            
+    else 
+    {
+        Console.WriteLine("This array is larger than the values that can be placed in it");
+        Environment.Exit(-1);
+    }
+
+    return newArray;
+}
+
+int[, ,] CreateRandom3dArray(int rows, int columns, int depth, int [, ,] array)
+{
+    int [, ,] newArray = new int[rows, columns, depth];
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            for (int k = 0; k < columns; k++)
+            {
+                newArray[i, j, k] = array [i, j, k];
+            }
+                
+    return newArray;
+}
+
 int[,] myArray = CreateRandom2dArray(rows, columns, minValue, maxValue);
-Console.WriteLine();
 
 int[,] myArray2 = CreateRandom2dArray(rows, columns, minValue, maxValue);
 
@@ -35,6 +83,20 @@ void Show2dArray (int [,] array)
         Console.WriteLine();
     }
 
+    Console.WriteLine();
+}
+
+void Show3dArray (int [, ,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.WriteLine();
+            for (int k = 0; k < array.GetLength(2); k++)
+                Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
+        }
+    }
     Console.WriteLine();
 }
 
@@ -124,40 +186,58 @@ int FindMinSumRow (int [,] array)
     return findRowMinSum;
 }
 
-void MultiplyMatrices (int [,] array, int [,] array2)
-{
-    int [,] multiplyArray = new int [array.GetLength(0), array2.GetLength(1)];
-    int temp = 0;
-     for (int i = 0; i < array.GetLength(0); i++)
-     {
-        for (int j = 0; j < array.GetLength(1); j++)
+int [,] MultiplyMatrices (int [,] array, int [,] array2, int rows, int columns)
+{   
+    int [,] multiplyMatrices = new int[array.GetLength(0), array2.GetLength(1)];
+    if (array.GetLength(1) == array2.GetLength(0))
         {
-            for (i = 0; i < array2.GetLength(0); i++)
+            for (int i = 0; i < multiplyMatrices.GetLength(0); i++)
             {
-                for (j = 0; j < array2.GetLength(1); j++)
+                for (int j = 0; j < multiplyMatrices.GetLength(1); j++)
                 {
-                    for (i = 0; i < multiplyArray.GetLength(0); i++)
-                    {
-                        for (j = 0; j < multiplyArray.GetLength(1); j++)
-                        {
-                            if(i % 2 == 0) 
-                            {
-                                multiplyArray [i, j] = array[i, j] * array2 [i, j];
-                                temp = multiplyArray [i, j];
-                            }
-                            else 
-                            {
-                                multiplyArray [i, j] = array[i, j] * array2 [i, j] + temp;
-                                Console.Write(multiplyArray[i, j] + " ");
-                            }
-
-                            Console.WriteLine();
-                        }
-                    }
+                    multiplyMatrices[i, j] = 0;
+                    for (int k = 0; k < array2.GetLength(1); k++)
+                    multiplyMatrices[i, j] += array[i, k] * array2[k, j];
                 }
             }
         }
-     }
+        else
+        {
+            Console.WriteLine("\nNumber of columns in First Matrix should be equal to Number of rows in Second Matrix.");
+            Console.WriteLine("\nPlease re-enter correct dimensions.");
+            Environment.Exit(-1);
+        }
+
+        return multiplyMatrices;
+}
+
+int[,] CreateSpiralArray(int rows, int columns)
+{
+    int[,] spiralArray = new int[rows, columns];
+    int row = 0;
+    int col = 0;
+    int dx = 1;
+    int dy = 0;
+    int changes = 0;
+    int count = columns;
+
+    for (int i = 0; i < spiralArray.Length; i++) 
+    {
+        spiralArray[row, col] = i + 1;
+
+        if (--count == 0) 
+        {
+            count = columns * (changes % 2) + rows * ((changes + 1) % 2) - (changes / 2 - 1) - 2;
+            int temp = dx;
+            dx = - dy;
+            dy = temp;
+            changes++;
+        }
+        col += dx;
+        row += dy;
+    }
+
+    return spiralArray;
 }
 
 /* Задача 54: Задайте двумерный массив. Напишите программу,
@@ -183,6 +263,8 @@ Show2dArray(myArray); */
 
 
 
+
+
 /* Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
 которая будет находить строку с наименьшей суммой элементов.
 
@@ -202,6 +284,8 @@ Show2dArray(myArray); */
 Console.WriteLine("Row " + FindMinSumRow(myArray) + " with the smallest sum of elements"); */
 
 
+
+
 /* Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 Например, даны 2 матрицы:
@@ -214,13 +298,10 @@ Console.WriteLine("Row " + FindMinSumRow(myArray) + " with the smallest sum of e
 
 //Решение Задачи №58
 
-/* Show2dArray(myArray);
+/* ShowMatrix(myArray, myArray2);
 
-Show2dArray(myArray2); */
+Show2dArray(MultiplyMatrices(myArray, myArray2, rows, columns)); */
 
-ShowMatrix(myArray, myArray2);
-
-/* MultiplyMatrices(myArray, myArray2); */
 
 
 /* Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
@@ -234,15 +315,27 @@ ShowMatrix(myArray, myArray2);
 
 //Решение Задачи №60
 
+// Console.Write("Input number of depth: ");
+// int depth = Convert.ToInt32(Console.ReadLine());
+
+// int [, ,] newArray3d = Create3dArrayNoRepetitions(rows, columns, depth);
+
+// Show3dArray(newArray3d);
+
 
 
 /* Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 
 Например, на выходе получается вот такой массив:
-01 02 03 04
-12 13 14 05
-11 16 15 06
-10 09 08 07 */
+01 02 03 04 05
+14 15 16 17 06
+13 20 19 18 07
+12 11 10 09 08 */
 
 //Решение Задачи №62
 
+
+
+int [,] newSpiralArray = CreateSpiralArray(rows, columns);
+
+Show2dArray(newSpiralArray);
