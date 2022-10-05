@@ -36,12 +36,28 @@ int SumOfDigigts (int n)
 
 void ShowIntervalNums (int m, int n)
 {
-    if(m > n) ShowIntervalNums(n - 1);
+    if(n > m)
+    {
+        if(n > m) ShowIntervalNums(m, n - 1);
+        Console.Write(n + " ");
+    }
 
-    Console.Write(m +" ");
+    else
+    {
+        if(m > n) ShowIntervalNums(m, n + 1);
+        Console.Write(n + " ");
+    }
 }
 
 ShowIntervalNums(numberM, numberN);
 
 // Напишите программу, которая на вход принимает два числа A и B,
 // и возводит число А в целую степень B с помощью рекурсии.
+
+int PowValue (int m, int n)
+{
+    if(n > 1) return PowValue(m, n - 1) * m;
+    else return m;
+}
+Console.WriteLine();
+Console.WriteLine(PowValue(numberM,numberN));
